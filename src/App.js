@@ -12,16 +12,20 @@ function App() {
     if(validateInput()){
 
       axios.post('http://localhost:8080/v1/users', {
-      firstName: firstName,
-      lastName: lastName,
+      firstname: firstName,
+      lastname: lastName,
       postal: postal,
       email: email,
       phone: phone,
     })
     .then(function (response) {
+      if(response.status==201){
+        alert('user created')
+      }
       console.log(response);
     })
     .catch(function (error) {
+      alert('user not created',error)
       console.log(error);
     });}
   }
